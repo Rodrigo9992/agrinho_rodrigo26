@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agro Forte, Futuro Sustentável</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --verde-escuro: #1a3d2b;
+    --verde-medio: #2d6a4f;
+    --verde-claro: #52b788;
+    --verde-brilho: #74c69d;
+    --ouro: #d4a017;
+    --ouro-claro: #f0c040;
+    --terra: #8b5e3c;
+    --creme: #f7f3e9;
+    --off-white: #fdfcf8;
+    --cinza-quente: #4a4540;
+    --bg-escuro: #0e1f16;
+    --azul-agua: #219ebc;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--cinza-quente);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--bg-escuro);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 2rem;
+  }
+
+  .hero-grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .hero-rings {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none;
+  }
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(82, 183, 136, 0.12);
+    animation: pulse-ring 6s ease-in-out infinite;
+  }
+  .ring:nth-child(1) { width: 300px; height: 300px; animation-delay: 0s; }
+  .ring:nth-child(2) { width: 500px; height: 500px; animation-delay: 1s; }
+  .ring:nth-child(3) { width: 700px; height: 700px; animation-delay: 2s; border-color: rgba(212,160,23,0.08); }
+  .ring:nth-child(4) { width: 900px; height: 900px; animation-delay: 3s; }
+
+  @keyframes pulse-ring {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.03); opacity: 1; }
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--verde-brilho);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--creme);
+    position: relative; z-index: 2;
+    max-width: 900px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--ouro-claro);
+  }
+  .hero-subtitle {
+    margin-top: 1.5rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 300;
+    color: rgba(247,243,233,0.65);
+    max-width: 560px;
+    line-height: 1.7;
+    position: relative; z-index: 2;
+  }
+
+  .hero-cta-group {
+    display: flex; gap: 1rem; margin-top: 3rem;
+    flex-wrap: wrap; justify-content: center;
+    position: relative; z-index: 2;
+  }
+  .btn-primary {
+    background: var(--verde-claro);
+    color: var(--bg-escuro);
+    border: none;
+    padding: 0.85rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(.175,.885,.32,1.275);
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--verde-brilho); transform: translateY(-3px) scale(1.03); }
+  .btn-primary:active { transform: translateY(0) scale(0.98); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--creme);
+    border: 1px solid rgba(247,243,233,0.3);
+    padding: 0.85rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--verde-claro); color: var(--verde-claro); transform: translateY(-2px); }
+
+  .scroll-indicator {
+    position: absolute; bottom: 2.5rem;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    z-index: 2;
+    animation: bob 2s ease-in-out infinite;
+  }
+  .scroll-indicator span { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(247,243,233,0.35); }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, rgba(82,183,136,0.8), transparent);
+  }
+  @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(14,31,22,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(82,183,136,0.1);
+    transition: all 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--creme);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .nav-dot { width: 8px; height: 8px; background: var(--verde-claro); border-radius: 50%; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(247,243,233,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--verde-brilho); }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 3rem; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--verde-medio);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--verde-escuro);
+    max-width: 700px;
+  }
+  .section-title em { font-style: italic; color: var(--verde-claro); }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--verde-escuro);
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+  }
+  .stat-item {
+    padding: 1.5rem 2rem;
+    border-right: 1px solid rgba(82,183,136,0.15);
+    transition: background 0.3s;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-item:hover { background: rgba(82,183,136,0.08); }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--ouro-claro);
+    line-height: 1;
+    counter-reset: num;
+  }
+  .stat-unit { font-size: 1.2rem; color: var(--verde-claro); }
+  .stat-label { margin-top: 0.5rem; font-size: 0.85rem; color: rgba(247,243,233,0.55); line-height: 1.4; }
+
+  /* ── PILARES ── */
+  .pilares {
+    background: var(--creme);
+    max-width: none;
+  }
+  .pilares-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .pilar-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(26,61,43,0.08);
+    transition: all 0.4s cubic-bezier(.175,.885,.32,1.275);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .pilar-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--clr, var(--verde-claro));
+    transform: scaleX(0);
+    transition: transform 0.4s;
+    transform-origin: left;
+  }
+  .pilar-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(26,61,43,0.12); }
+  .pilar-card:hover::before { transform: scaleX(1); }
+  .pilar-card:active { transform: translateY(-2px) scale(0.99); }
+
+  .pilar-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    background: var(--icon-bg, #e8f5ee);
+  }
+  .pilar-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--verde-escuro);
+    margin-bottom: 0.6rem;
+  }
+  .pilar-card p { font-size: 0.9rem; line-height: 1.65; color: #6b6560; }
+  .pilar-tag {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    background: var(--tag-bg, #e8f5ee);
+    color: var(--tag-color, var(--verde-medio));
+    font-weight: 500;
+  }
+
+  /* ── EQUILÍBRIO ── */
+  .equilibrio {
+    background: var(--bg-escuro);
+    color: var(--creme);
+    position: relative;
+    overflow: hidden;
+  }
+  .equilibrio .section-title { color: var(--creme); }
+  .equilibrio .section-title em { color: var(--ouro-claro); }
+  .equilibrio .section-label { color: var(--verde-claro); }
+
+  .balance-viz {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 0;
+    align-items: center;
+    max-width: 900px;
+  }
+  .balance-side {
+    background: rgba(255,255,255,0.04);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.5s;
+  }
+  .balance-side:hover { background: rgba(255,255,255,0.07); border-color: rgba(82,183,136,0.2); }
+  .balance-side h4 { font-family:'Fraunces',serif; font-size:1.2rem; margin-bottom:1rem; color: var(--creme); }
+  .balance-meter {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .balance-beam {
+    width: 2px; height: 80px;
+    background: linear-gradient(to bottom, rgba(82,183,136,0.8), rgba(212,160,23,0.8));
+    position: relative;
+  }
+  .balance-orb {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: conic-gradient(var(--verde-claro) 50%, var(--ouro) 50%);
+    animation: spin-slow 8s linear infinite;
+  }
+  @keyframes spin-slow { to { transform: rotate(360deg); } }
+
+  .bar-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .bar-item { font-size: 0.85rem; color: rgba(247,243,233,0.7); display: flex; align-items: center; gap: 0.6rem; }
+  .bar-item::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--dot-color, var(--verde-claro)); flex-shrink: 0; }
+
+  /* ── TECNOLOGIAS ── */
+  .tecnologias { background: var(--off-white); }
+  .tech-tabs {
+    display: flex; gap: 0.5rem; margin-top: 2.5rem; flex-wrap: wrap;
+  }
+  .tech-tab {
+    padding: 0.6rem 1.4rem;
+    border-radius: 100px;
+    border: 1px solid rgba(26,61,43,0.2);
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    color: var(--cinza-quente);
+  }
+  .tech-tab:hover { border-color: var(--verde-claro); color: var(--verde-medio); }
+  .tech-tab.active {
+    background: var(--verde-escuro);
+    border-color: var(--verde-escuro);
+    color: white;
+  }
+  .tech-content {
+    display: none;
+    margin-top: 2rem;
+    animation: fade-up 0.4s ease;
+  }
+  .tech-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+  @keyframes fade-up { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+  .tech-info h3 { font-family:'Fraunces',serif; font-size:1.8rem; font-weight:700; color:var(--verde-escuro); margin-bottom:1rem; }
+  .tech-info p { font-size:0.95rem; line-height:1.7; color:#6b6560; margin-bottom:1.5rem; }
+  .tech-metrics { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .tech-metric {
+    background: var(--verde-escuro);
+    color: var(--creme);
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .tech-metric .m-num { font-family:'Fraunces',serif; font-size:1.4rem; font-weight:900; color:var(--ouro-claro); }
+  .tech-metric .m-lbl { font-size:0.72rem; color:rgba(247,243,233,0.6); margin-top:0.2rem; }
+
+  .tech-visual {
+    background: var(--creme);
+    border-radius: 20px;
+    padding: 2rem;
+    min-height: 240px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+    border: 1px solid rgba(26,61,43,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .tech-visual::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(82,183,136,0.08);
+  }
+
+  /* ── CICLO ── */
+  .ciclo { background: var(--creme); }
+  .ciclo-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    margin-top: 3rem;
+    position: relative;
+  }
+  .ciclo-step {
+    padding: 2rem 1.5rem;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s;
+    border-radius: 8px;
+  }
+  .ciclo-step:hover { background: rgba(82,183,136,0.06); }
+  .ciclo-step.active-step { background: rgba(82,183,136,0.1); }
+  .step-num {
+    font-family: 'Fraunces', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: rgba(82,183,136,0.15);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s;
+  }
+  .ciclo-step:hover .step-num, .ciclo-step.active-step .step-num { color: rgba(82,183,136,0.4); }
+  .ciclo-step h4 { font-family:'Fraunces',serif; font-size:1rem; font-weight:700; color:var(--verde-escuro); margin-bottom:0.5rem; }
+  .ciclo-step p { font-size:0.82rem; color:#6b6560; line-height:1.55; }
+  .step-arrow {
+    position: absolute;
+    right: -10px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--verde-claro);
+    opacity: 0.4;
+    z-index: 2;
+  }
+
+  /* ── IMPACTO ── */
+  .impacto { background: var(--verde-escuro); overflow: hidden; }
+  .impacto .section-title { color: var(--creme); }
+  .impacto .section-label { color: var(--verde-claro); }
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .impact-card {
+    padding: 1.8rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.4s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .impact-card:hover { background: rgba(255,255,255,0.08); transform: scale(1.02); }
+  .impact-card:active { transform: scale(0.99); }
+  .impact-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .impact-card h4 { font-family:'Fraunces',serif; font-size:1.1rem; color:var(--creme); margin-bottom:0.5rem; }
+  .impact-card p { font-size:0.83rem; color:rgba(247,243,233,0.55); line-height:1.6; }
+  .impact-progress {
+    margin-top: 1.2rem;
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .impact-bar {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(to right, var(--verde-claro), var(--ouro-claro));
+    width: 0;
+    transition: width 1.5s cubic-bezier(.165,.84,.44,1);
+  }
+
+  /* ── CTA FINAL ── */
+  .cta-final {
+    background: var(--off-white);
+    text-align: center;
+    padding: 8rem 3rem;
+  }
+  .cta-final .section-title { margin: 0 auto 1.5rem; text-align: center; }
+  .cta-final p { max-width: 500px; margin: 0 auto 3rem; color: #6b6560; line-height: 1.7; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-verde {
+    background: var(--verde-escuro);
+    color: var(--creme);
+    border: none;
+    padding: 1rem 2.4rem;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(.175,.885,.32,1.275);
+  }
+  .btn-verde:hover { background: var(--verde-medio); transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 40px rgba(26,61,43,0.25); }
+  .btn-verde:active { transform: translateY(0) scale(0.98); }
+  .btn-outline-verde {
+    background: transparent;
+    color: var(--verde-escuro);
+    border: 1.5px solid var(--verde-escuro);
+    padding: 1rem 2.4rem;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-outline-verde:hover { background: var(--verde-escuro); color: var(--creme); transform: translateY(-3px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #070f0a;
+    color: rgba(247,243,233,0.4);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(82,183,136,0.1);
+  }
+  footer span { color: var(--verde-claro); }
+
+  /* ── TOOLTIP ── */
+  [data-tip] { position: relative; }
+  [data-tip]:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 110%; left: 50%; transform: translateX(-50%);
+    background: var(--verde-escuro);
+    color: var(--creme);
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    white-space: nowrap;
+    z-index: 99;
+    pointer-events: none;
+    opacity: 0;
+    animation: tip-appear 0.2s 0.1s forwards;
+  }
+  @keyframes tip-appear { to { opacity: 1; bottom: 120%; } }
+
+  /* ── COUNTER ANIMATION ── */
+  @keyframes count-up { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .balance-viz { grid-template-columns: 1fr; }
+    .balance-meter { display: none; }
+    .tech-content.active { grid-template-columns: 1fr; }
+  }
+
+  /* Animated gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--verde-claro), var(--ouro-claro), var(--verde-brilho));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
+  }
+  @keyframes gradient-shift {
+    0%,100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><div class="nav-dot"></div> AgRo Sustentável</div>
+  <ul class="nav-links">
+    <li><a href="#pilares">Pilares</a></li>
+    <li><a href="#tecnologias">Tecnologia</a></li>
+    <li><a href="#ciclo">Ciclo</a></li>
+    <li><a href="#impacto">Impacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grain"></div>
+  <div class="hero-rings">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+  </div>
+  <p class="hero-eyebrow">🌾 Brasil · Agronegócio · Sustentabilidade</p>
+  <h1 class="hero-title">Agro <em>Forte</em>,<br>Futuro <em>Sustentável</em></h1>
+  <p class="hero-subtitle">O equilíbrio entre produção agrícola eficiente e a preservação do meio ambiente é o desafio e o caminho da nossa geração.</p>
+  <div class="hero-cta-group">
+    <a href="#pilares" class="btn-primary">Explorar Pilares</a>
+    <a href="#impacto" class="btn-ghost">Ver Impacto</a>
+  </div>
+  <div class="scroll-indicator">
+    <span>Role</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item" data-tip="Segundo IBGE, 2023">
+    <div class="stat-num"><span class="counter" data-target="2">0</span><span class="stat-unit">ª</span></div>
+    <div class="stat-label">maior exportadora<br>agrícola do mundo</div>
+  </div>
+  <div class="stat-item" data-tip="Área de vegetação nativa preservada">
+    <div class="stat-num"><span class="counter" data-target="66">0</span><span class="stat-unit">%</span></div>
+    <div class="stat-label">do território com<br>vegetação preservada</div>
+  </div>
+  <div class="stat-item" data-tip="Participação no PIB nacional">
+    <div class="stat-num"><span class="counter" data-target="24">0</span><span class="stat-unit">%</span></div>
+    <div class="stat-label">do PIB brasileiro<br>vem do agro</div>
+  </div>
+  <div class="stat-item" data-tip="Bilhões de litros/ano">
+    <div class="stat-num"><span class="counter" data-target="18">0</span><span class="stat-unit">bi</span></div>
+    <div class="stat-label">litros de água<br>reutilizados/ano</div>
+  </div>
+</div>
+
+<!-- PILARES -->
+<section class="pilares" id="pilares">
+  <div class="section-label">Fundamentos</div>
+  <h2 class="section-title">Os <em>pilares</em> do agro sustentável</h2>
+  <div class="pilares-grid">
+    <div class="pilar-card" style="--clr:#52b788; --icon-bg:#e8f5ee; --tag-bg:#e8f5ee; --tag-color:#2d6a4f;" onclick="this.style.transform='scale(0.97)'; setTimeout(()=>this.style.transform='',200)">
+      <div class="pilar-icon">🌱</div>
+      <h3>Agricultura Regenerativa</h3>
+      <p>Práticas que restauram a saúde do solo, aumentam a biodiversidade e sequestram carbono, enquanto mantêm a produtividade das lavouras.</p>
+      <span class="pilar-tag">Solo & Biodiversidade</span>
+    </div>
+    <div class="pilar-card" style="--clr:#219ebc; --icon-bg:#e3f4f9; --tag-bg:#e3f4f9; --tag-color:#1571a3;" onclick="this.style.transform='scale(0.97)'; setTimeout(()=>this.style.transform='',200)">
+      <div class="pilar-icon">💧</div>
+      <h3>Gestão Hídrica Eficiente</h3>
+      <p>Sistemas de irrigação de precisão, captação de água da chuva e reuso reduzem o consumo hídrico em até 60% sem perda de produção.</p>
+      <span class="pilar-tag">Água & Eficiência</span>
+    </div>
+    <div class="pilar-card" style="--clr:#d4a017; --icon-bg:#fdf5e0; --tag-bg:#fdf5e0; --tag-color:#a37a0d;" onclick="this.style.transform='scale(0.97)'; setTimeout(()=>this.style.transform='',200)">
+      <div class="pilar-icon">☀️</div>
+      <h3>Energia Limpa no Campo</h3>
+      <p>Painéis solares, biodigestores e eólicas rurais tornam o campo energeticamente autossuficiente e ainda vendem energia para a rede.</p>
+      <span class="pilar-tag">Energia Renovável</span>
+    </div>
+    <div class="pilar-card" style="--clr:#52b788; --icon-bg:#e8f5ee; --tag-bg:#e8f5ee; --tag-color:#2d6a4f;" onclick="this.style.transform='scale(0.97)'; setTimeout(()=>this.style.transform='',200)">
+      <div class="pilar-icon">🛰️</div>
+      <h3>Agro de Precisão Digital</h3>
+      <p>Drones, IA, sensores IoT e satélites mapeiam as necessidades de cada metro quadrado da lavoura, evitando desperdício e maximizando colheitas.</p>
+      <span class="pilar-tag">Tecnologia & Dados</span>
+    </div>
+    <div class="pilar-card" style="--clr:#8b5e3c; --icon-bg:#f5ece3; --tag-bg:#f5ece3; --tag-color:#8b5e3c;" onclick="this.style.transform='scale(0.97)'; setTimeout(()=>this.style.transform='',200)">
+      <div class="pilar-icon">🌳</div>
+      <h3>Florestas & Áreas de Preservação</h3>
+      <p>Reservas Legais, APPs e corredores ecológicos garantem que a produção coexista com a floresta — ambos se beneficiam mutuamente.</p>
+      <span class="pilar-tag">Conservação</span>
+    </div>
+    <div class="pilar-card" style="--clr:#219ebc; --icon-bg:#e3f4f9; --tag-bg:#e3f4f9; --tag-color:#1571a3;" onclick="this.style.transform='scale(0.97)'; setTimeout(()=>this.style.transform='',200)">
+      <div class="pilar-icon">👥</div>
+      <h3>Desenvolvimento Social Rural</h3>
+      <p>Capacitação de agricultores, apoio à agricultura familiar e acesso a crédito verde garantem que a sustentabilidade seja inclusiva.</p>
+      <span class="pilar-tag">Pessoas & Comunidades</span>
+    </div>
+  </div>
+</section>
+
+<!-- EQUILÍBRIO -->
+<section class="equilibrio">
+  <div class="section-label">A Balança</div>
+  <h2 class="section-title">Produção e <em>natureza</em>:<br>dois lados da mesma moeda</h2>
+  <div class="balance-viz">
+    <div class="balance-side">
+      <h4>🌾 Produção Agrícola</h4>
+      <ul class="bar-list">
+        <li class="bar-item" style="--dot-color:#74c69d">Segurança alimentar global</li>
+        <li class="bar-item" style="--dot-color:#74c69d">Geração de empregos e renda</li>
+        <li class="bar-item" style="--dot-color:#74c69d">Balança comercial positiva</li>
+        <li class="bar-item" style="--dot-color:#74c69d">Inovação tecnológica rural</li>
+        <li class="bar-item" style="--dot-color:#74c69d">Desenvolvimento do interior</li>
+      </ul>
+    </div>
+    <div class="balance-meter">
+      <div class="balance-orb"></div>
+      <div class="balance-beam"></div>
+      <div class="balance-orb" style="animation-direction:reverse"></div>
+    </div>
+    <div class="balance-side">
+      <h4>🌿 Meio Ambiente</h4>
+      <ul class="bar-list">
+        <li class="bar-item" style="--dot-color:#f0c040">Biodiversidade preservada</li>
+        <li class="bar-item" style="--dot-color:#f0c040">Carbono sequestrado</li>
+        <li class="bar-item" style="--dot-color:#f0c040">Rios e aquíferos limpos</li>
+        <li class="bar-item" style="--dot-color:#f0c040">Clima regulado</li>
+        <li class="bar-item" style="--dot-color:#f0c040">Serviços ecossistêmicos</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TECNOLOGIAS -->
+<section class="tecnologias" id="tecnologias">
+  <div class="section-label">Inovação</div>
+  <h2 class="section-title">Tecnologias que<br>mudam o <em>campo</em></h2>
+  <div class="tech-tabs">
+    <button class="tech-tab active" onclick="showTech('drone')">Drones Agrícolas</button>
+    <button class="tech-tab" onclick="showTech('ia')">Inteligência Artificial</button>
+    <button class="tech-tab" onclick="showTech('sensor')">Sensores IoT</button>
+    <button class="tech-tab" onclick="showTech('bio')">Bioenergia</button>
+    <button class="tech-tab" onclick="showTech('sat')">Satélites</button>
+  </div>
+
+  <div class="tech-content active" id="tech-drone">
+    <div class="tech-info">
+      <h3>Drones Agrícolas</h3>
+      <p>Aeronaves não tripuladas equipadas com câmeras multiespectrais e sensores LiDAR mapeiam lavouras em tempo real, identificando pragas, deficiências nutricionais e variações de umidade com resolução centimétrica.</p>
+      <div class="tech-metrics">
+        <div class="tech-metric"><div class="m-num">70%</div><div class="m-lbl">menos pesticidas</div></div>
+        <div class="tech-metric"><div class="m-num">10×</div><div class="m-lbl">mais rápido que manual</div></div>
+        <div class="tech-metric"><div class="m-num">95%</div><div class="m-lbl">precisão de mapeamento</div></div>
+      </div>
+    </div>
+    <div class="tech-visual">🚁<br><span style="font-size:1rem;margin-top:0.5rem;display:block;color:#2d6a4f;font-family:'DM Sans';font-size:0.85rem">Drone em operação</span></div>
+  </div>
+
+  <div class="tech-content" id="tech-ia">
+    <div class="tech-info">
+      <h3>Inteligência Artificial</h3>
+      <p>Algoritmos de machine learning analisam dados históricos de clima, solo e produção para prever rendimentos, detectar doenças precocemente e recomendar o momento ideal de plantio e colheita.</p>
+      <div class="tech-metrics">
+        <div class="tech-metric"><div class="m-num">+30%</div><div class="m-lbl">produtividade</div></div>
+        <div class="tech-metric"><div class="m-num">-40%</div><div class="m-lbl">perdas pós-colheita</div></div>
+        <div class="tech-metric"><div class="m-num">98%</div><div class="m-lbl">precisão diagnóstica</div></div>
+      </div>
+    </div>
+    <div class="tech-visual">🧠<br><span style="font-size:0.85rem;margin-top:0.5rem;display:block;color:#2d6a4f;font-family:'DM Sans'">Análise preditiva</span></div>
+  </div>
+
+  <div class="tech-content" id="tech-sensor">
+    <div class="tech-info">
+      <h3>Sensores IoT no Solo</h3>
+      <p>Milhares de sensores conectados medem pH, umidade, temperatura e nutrientes do solo em tempo real, enviando dados para a nuvem e automatizando a irrigação conforme a necessidade real da planta.</p>
+      <div class="tech-metrics">
+        <div class="tech-metric"><div class="m-num">60%</div><div class="m-lbl">economia de água</div></div>
+        <div class="tech-metric"><div class="m-num">24/7</div><div class="m-lbl">monitoramento</div></div>
+        <div class="tech-metric"><div class="m-num">+25%</div><div class="m-lbl">produtividade hídrica</div></div>
+      </div>
+    </div>
+    <div class="tech-visual">📡<br><span style="font-size:0.85rem;margin-top:0.5rem;display:block;color:#2d6a4f;font-family:'DM Sans'">Sensores conectados</span></div>
+  </div>
+
+  <div class="tech-content" id="tech-bio">
+    <div class="tech-info">
+      <h3>Bioenergia & Biogás</h3>
+      <p>Resíduos agroindustriais (bagaço de cana, dejetos animais, palha) são convertidos em biogás e biofertilizante via biodigestão anaeróbica, gerando energia renovável e reduzindo emissões de metano.</p>
+      <div class="tech-metrics">
+        <div class="tech-metric"><div class="m-num">85%</div><div class="m-lbl">menos resíduos</div></div>
+        <div class="tech-metric"><div class="m-num">100%</div><div class="m-lbl">energia própria</div></div>
+        <div class="tech-metric"><div class="m-num">-90%</div><div class="m-lbl">emissão de metano</div></div>
+      </div>
+    </div>
+    <div class="tech-visual">⚡<br><span style="font-size:0.85rem;margin-top:0.5rem;display:block;color:#2d6a4f;font-family:'DM Sans'">Biodigestor rural</span></div>
+  </div>
+
+  <div class="tech-content" id="tech-sat">
+    <div class="tech-info">
+      <h3>Monitoramento por Satélite</h3>
+      <p>Imagens de satélite com resolução de 10 metros revisitam propriedades semanalmente, monitorando o crescimento da lavoura, desmatamento ilegal e conformidade com o Código Florestal.</p>
+      <div class="tech-metrics">
+        <div class="tech-metric"><div class="m-num">10m</div><div class="m-lbl">resolução espacial</div></div>
+        <div class="tech-metric"><div class="m-num">7 dias</div><div class="m-lbl">revisita</div></div>
+        <div class="tech-metric"><div class="m-num">100%</div><div class="m-lbl">rastreabilidade</div></div>
+      </div>
+    </div>
+    <div class="tech-visual">🛰️<br><span style="font-size:0.85rem;margin-top:0.5rem;display:block;color:#2d6a4f;font-family:'DM Sans'">Visão orbital</span></div>
+  </div>
+</section>
+
+<!-- CICLO -->
+<section class="ciclo" id="ciclo">
+  <div class="section-label">Processo</div>
+  <h2 class="section-title">O <em>ciclo</em> virtuoso<br>da produção responsável</h2>
+  <div class="ciclo-steps">
+    <div class="ciclo-step active-step" onclick="activateStep(this)">
+      <div class="step-num">01</div>
+      <h4>Planejamento de Uso do Solo</h4>
+      <p>Zoneamento agroecológico define onde produzir e onde preservar, respeitando vocações naturais.</p>
+      <span class="step-arrow">→</span>
+    </div>
+    <div class="ciclo-step" onclick="activateStep(this)">
+      <div class="step-num">02</div>
+      <h4>Produção com Precisão</h4>
+      <p>Tecnologia garante máxima eficiência com mínimo impacto ambiental em cada etapa da lavoura.</p>
+      <span class="step-arrow">→</span>
+    </div>
+    <div class="ciclo-step" onclick="activateStep(this)">
+      <div class="step-num">03</div>
+      <h4>Gestão de Resíduos</h4>
+      <p>Zero desperdício: palha vira biogás, dejetos viram biofertilizante, água é tratada e reusada.</p>
+      <span class="step-arrow">→</span>
+    </div>
+    <div class="ciclo-step" onclick="activateStep(this)">
+      <div class="step-num">04</div>
+      <h4>Rastreabilidade Total</h4>
+      <p>Blockchain e certificações garantem que o produto chegue ao consumidor com transparência de origem.</p>
+      <span class="step-arrow">→</span>
+    </div>
+    <div class="ciclo-step" onclick="activateStep(this)">
+      <div class="step-num">05</div>
+      <h4>Restauração & Reinvestimento</h4>
+      <p>Parte da renda vai para reflorestamento, manutenção de APPs e pesquisa em novas práticas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACTO -->
+<section class="impacto" id="impacto">
+  <div class="section-label">Resultados</div>
+  <h2 class="section-title">Impacto real,<br>números <em>concretos</em></h2>
+  <div class="impact-grid">
+    <div class="impact-card" onclick="toggleCard(this)">
+      <div class="impact-icon">🌲</div>
+      <h4>Florestas Preservadas</h4>
+      <p>O Brasil preserva mais florestas que qualquer outro país produtor agrícola — 66% do território ainda tem vegetação nativa.</p>
+      <div class="impact-progress"><div class="impact-bar" style="width:0" data-width="66"></div></div>
+    </div>
+    <div class="impact-card" onclick="toggleCard(this)">
+      <div class="impact-icon">🌡️</div>
+      <h4>Redução de Carbono</h4>
+      <p>Sistemas de plantio direto e integração lavoura-pecuária-floresta já sequestram 1 bilhão de toneladas de CO₂ por ano.</p>
+      <div class="impact-progress"><div class="impact-bar" style="width:0" data-width="78"></div></div>
+    </div>
+    <div class="impact-card" onclick="toggleCard(this)">
+      <div class="impact-icon">💧</div>
+      <h4>Eficiência Hídrica</h4>
+      <p>Irrigação de precisão reduziu o consumo de água na agricultura brasileira em 40% na última década.</p>
+      <div class="impact-progress"><div class="impact-bar" style="width:0" data-width="40"></div></div>
+    </div>
+    <div class="impact-card" onclick="toggleCard(this)">
+      <div class="impact-icon">🐝</div>
+      <h4>Biodiversidade Protegida</h4>
+      <p>Corredores ecológicos e Reservas Legais protegem habitats de mais de 200 mil espécies endêmicas.</p>
+      <div class="impact-progress"><div class="impact-bar" style="width:0" data-width="85"></div></div>
+    </div>
+    <div class="impact-card" onclick="toggleCard(this)">
+      <div class="impact-icon">☀️</div>
+      <h4>Energia Renovável</h4>
+      <p>O agro brasileiro já responde por 30% da geração de bioenergia renovável do país, reduzindo dependência de fósseis.</p>
+      <div class="impact-progress"><div class="impact-bar" style="width:0" data-width="30"></div></div>
+    </div>
+    <div class="impact-card" onclick="toggleCard(this)">
+      <div class="impact-icon">🍎</div>
+      <h4>Segurança Alimentar</h4>
+      <p>O Brasil alimenta 1,5 bilhão de pessoas fora do país, sendo o principal fornecedor de alimentos em 120 nações.</p>
+      <div class="impact-progress"><div class="impact-bar" style="width:0" data-width="92"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="section-label" style="text-align:center">Próximos passos</div>
+  <h2 class="section-title gradient-text" style="font-size:clamp(2rem,5vw,3rem); text-align:center; max-width:600px; -webkit-text-fill-color:unset; background-clip:text; -webkit-background-clip:text;">Seja parte da<br>transformação verde</h2>
+  <p>O futuro do agro sustentável depende de cada escolha — do produtor rural ao consumidor urbano, da política pública ao investimento privado.</p>
+  <div class="cta-buttons">
+    <button class="btn-verde" onclick="alert('Conectando você à rede de produtores sustentáveis! 🌱')">Conectar com Produtores</button>
+    <button class="btn-outline-verde" onclick="alert('Baixando o Guia Completo de Práticas Sustentáveis 📘')">Baixar Guia Gratuito</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Agro Forte, Futuro Sustentável</span> · Feito com 🌱 para o Brasil e o planeta</p>
+</footer>
+
+<script>
+  // Tech tabs
+  function showTech(id) {
+    document.querySelectorAll('.tech-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tech-content').forEach(c => c.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('tech-' + id).classList.add('active');
+  }
+
+  // Cycle steps
+  function activateStep(el) {
+    document.querySelectorAll('.ciclo-step').forEach(s => s.classList.remove('active-step'));
+    el.classList.add('active-step');
+  }
+
+  // Toggle card info
+  function toggleCard(card) {
+    card.style.background = card.style.background === 'rgba(255,255,255,0.12)' 
+      ? '' : 'rgba(255,255,255,0.12)';
+  }
+
+  // Counter animation
+  function animateCounters() {
+    document.querySelectorAll('.counter').forEach(el => {
+      const target = parseInt(el.getAttribute('data-target'));
+      let current = 0;
+      const step = target / 40;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.round(current);
+      }, 40);
+    });
+  }
+
+  // Impact bars animation
+  function animateBars() {
+    document.querySelectorAll('.impact-bar').forEach(bar => {
+      const width = bar.getAttribute('data-width');
+      setTimeout(() => { bar.style.width = width + '%'; }, 300);
+    });
+  }
+
+  // Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (entry.target.classList.contains('stats-bar')) animateCounters();
+        if (entry.target.classList.contains('impacto')) animateBars();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelector('.stats-bar') && observer.observe(document.querySelector('.stats-bar'));
+  document.querySelector('.impacto') && observer.observe(document.querySelector('.impacto'));
+
+  // Smooth nav highlight on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 100) {
+      nav.style.padding = '0.8rem 3rem';
+    } else {
+      nav.style.padding = '1.2rem 3rem';
+    }
+  });
+</script>
+</body>
+</html>
